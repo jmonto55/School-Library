@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-   <h1><b>My Enumerable</b></h1>
+   <h1><b>School Library</b></h1>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -30,9 +30,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 My Enumerable <a name="about-project"></a>
+# 📖 School Library <a name="about-project"></a>
 
-**My Enumerable** is a Ruby script that implements a subset of the functionality of Enumerable methods.
+**School Library** is a Ruby app that allows users to manage libraries and book rentals .
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -64,7 +64,7 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Users can translate code morse messages**
+- **Users can be created as students or teachers**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -95,14 +95,14 @@ To get a local copy up and running follow these simple example steps.
 Clone this repository in the desired folder:
 ```
 cd my-folder
-git clone https://github.com/ashmalzahra/My-Enumerable.git
+git clone https://github.com/ashmalzahra/School-Library.git
 ```
 
 ### Install
 
 To install this project:
 ```
-cd My-Enumerable
+cd School-Library
 code .
 bundler install
 ```
@@ -112,7 +112,8 @@ bundler install
 To run the project, execute the following command:
 
 ```
-copy paste on irb
+ruby teacher.rb
+ruby student.rb
 ```
 
 ### Run Tests
@@ -129,11 +130,6 @@ N/A
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Ashmal Zahra**
-
-- GitHub: [@ashmalzahra](https://github.com/ashmalzahra)
-- Twitter: [@AshmalZahraa](https://twitter.com/AshmalZahraa)
-- LinkedIn: [ashmal-zahra](https://www.linkedin.com/in/ashmal-zahra)
 
 👤 **Jose Montoya**
 
@@ -145,7 +141,8 @@ N/A
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Corrections spotted by reviewer will be implemented**
+- [ ] **Add new books.**
+- [ ] **Save records of who borrowed a given book and when.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
