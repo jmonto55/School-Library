@@ -95,7 +95,7 @@ To get a local copy up and running follow these simple example steps.
 Clone this repository in the desired folder:
 ```
 cd my-folder
-git clone https://github.com/ashmalzahra/School-Library.git
+git clone https://github.com/jmonto55/School-Library.git
 ```
 
 ### Install
