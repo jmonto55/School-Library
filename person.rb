@@ -1,4 +1,6 @@
 require_relative './nameable'
+require_relative './capitalize_decorator'
+require_relative './trimmer_decorator'
 
 class Person < Nameable
   attr_accessor :name, :age
@@ -16,7 +18,7 @@ class Person < Nameable
     @parent_permission || is_of_age?
   end
 
-  def correct_name(_name)
+  def correct_name
     @name
   end
 
@@ -26,3 +28,4 @@ class Person < Nameable
     @age >= 18
   end
 end
+
