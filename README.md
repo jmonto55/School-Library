@@ -100,11 +100,10 @@ bundler install
 
 ### Usage
 
-To run the project, execute the following command:
+To run the project, execute the following command in Bash:
 
 ```
-ruby teacher.rb
-ruby student.rb
+./main.rb
 ```
 
 ### Run Tests
