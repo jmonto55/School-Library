@@ -1,4 +1,6 @@
 require_relative './book'
+require_relative './student'
+require_relative './teacher'
 
 class App
   def initialize
@@ -36,7 +38,8 @@ class App
     when 7
       puts 'Thank you for using this app!'
     else
-      puts 'Invalid option!'
+      puts '⛔ Invalid option!'
+      puts ''
       run
     end
   end
@@ -49,9 +52,15 @@ class App
   end
 
   def list_books
-    @books.each do |book|
-      puts "#{book.title} by #{book.author}"
+    if @books.empty?
+      puts 'No books available 😓'
+      puts ''
+      run
     end
+    @books.each do |book|
+      puts "Title: #{book.title}, Author: #{book.author}"
+    end
+    puts ''
     run
   end
 
@@ -62,7 +71,55 @@ class App
     author = gets.chomp
     book = Book.new(title, author)
     @books << book
-    puts 'Book created successfully'
+    puts 'Book created successfully ✔️'
+    puts ''
     run
+  end
+
+  def list_people
+    if @people.empty?
+      puts 'No people available 😓'
+      puts ''
+      run
+    end
+    @people.each do |person|
+      puts "[#{person.class.name}]  Name: #{person.name}, ID: #{person.id} Age: #{person.age}"
+    end
+    puts ''
+    run
+  end
+
+  def create_person
+    print 'Do you want to create a student (1) or a teacher (2)? [Input only the number]:'
+    answer = gets.chomp.to_i
+    if answer != 1 && answer != 2
+      puts '⛔ Invalid input!'
+      puts ''
+      run
+    end
+    print 'Name:'
+    name = gets.chomp
+    print 'Age: '
+    age = gets.chomp.to_i
+    if answer == 1
+      student = Student.new(nil, age, name)
+      @people << student
+      puts 'Student created successfully ✔️'
+      puts ''
+      run
+    elsif answer == 2
+      teacher = Teacher.new(nil, age, name)
+      @people << teacher
+      puts 'Teacher created successfully ✔️'
+      puts ''
+      run
+    end
+  end
+
+  def create_rental
+    puts 'Select a book from the following list by number'
+    @books.each do |book, index|
+      puts "#{index}) Title: #{book.title}, Author: #{book.author}"
+    end
   end
 end
