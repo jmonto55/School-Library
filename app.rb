@@ -95,7 +95,6 @@ class App
     answer = gets.chomp.to_i
     if answer != 1 && answer != 2
       puts '⛔ Invalid input!'
-      puts ''
       run
     end
     print 'Name:'
@@ -103,29 +102,29 @@ class App
     print 'Age: '
     age = gets.chomp.to_i
     if answer == 1
-      student = Student.new(nil, age, name)
-      @people << student
-      puts 'Student created successfully ✔️'
-      puts ''
-      run
+      create_student(name, age)
     elsif answer == 2
-      teacher = Teacher.new(nil, age, name)
-      @people << teacher
-      puts 'Teacher created successfully ✔️'
-      puts ''
-      run
+      create_teacher(name, age)
     end
   end
 
+  def create_student(name, age)
+    student = Student.new(nil, age, name)
+    @people << student
+    puts 'Student created successfully ✔️'
+    run
+  end
+
+  def create_teacher(name, age)
+    teacher = Teacher.new(nil, age, name)
+    @people << teacher
+    puts 'Teacher created successfully ✔️'
+    run
+  end
+
   def create_rental
-    if @books.empty?
-      puts 'No books available for rent, create one!'
-      puts ''
-      run
-    end
-    if @people.empty?
-      puts 'No people available, create a person!'
-      puts ''
+    if @books.empty? || @people.empty?
+      puts 'No books or people created yet, create one!'
       run
     end
     puts 'Select a book from the following list by number:'
@@ -142,34 +141,28 @@ class App
 
     print 'Date: '
     date = gets.chomp
-
     rental = Rental.new(date, @books[id_book], @people[id_person])
     @rentals << rental
     puts 'Rental created successfully ✔️'
-    puts ''
     run
   end
 
   def list_rentals
     if @rentals.empty?
       puts 'No rentals available 😓'
-      puts ''
       run
     end
-
     print 'ID of person: '
     id_person = gets.chomp.to_i
     puts 'Rentals: '
-    rentals = @rentals.select { |rental| rental.person.id === id_person}
+    rentals = @rentals.select { |rental| rental.person.id == id_person }
     if rentals.empty?
       puts 'No rentals available for this ID😓'
-      puts ''
       run
     end
     rentals.each do |rental|
       puts "#{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
     end
-    puts ''
     run
   end
 end
