@@ -117,9 +117,11 @@ class App
   end
 
   def create_rental
-    puts 'Select a book from the following list by number'
+    puts 'Select a book from the following list by number:'
     @books.each do |book, index|
       puts "#{index}) Title: #{book.title}, Author: #{book.author}"
     end
+    answer = gets.chomp.to_i
+    run
   end
 end
