@@ -1,6 +1,7 @@
 require_relative './book'
 require_relative './student'
 require_relative './teacher'
+require_relative './rental'
 
 class App
   def initialize
@@ -117,11 +118,58 @@ class App
   end
 
   def create_rental
+    if @books.empty?
+      puts 'No books available for rent, create one!'
+      puts ''
+      run
+    end
+    if @people.empty?
+      puts 'No people available, create a person!'
+      puts ''
+      run
+    end
     puts 'Select a book from the following list by number:'
-    @books.each do |book, index|
+    @books.each_with_index do |book, index|
       puts "#{index}) Title: #{book.title}, Author: #{book.author}"
     end
-    answer = gets.chomp.to_i
+    id_book = gets.chomp.to_i
+
+    puts 'Select a person from the following list by number (not ID)'
+    @people.each_with_index do |person, index|
+      puts "#{index}) [#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    id_person = gets.chomp.to_i
+
+    print 'Date: '
+    date = gets.chomp
+
+    rental = Rental.new(date, @books[id_book], @people[id_person])
+    @rentals << rental
+    puts 'Rental created successfully ✔️'
+    puts ''
+    run
+  end
+
+  def list_rentals
+    if @rentals.empty?
+      puts 'No rentals available 😓'
+      puts ''
+      run
+    end
+
+    print 'ID of person: '
+    id_person = gets.chomp.to_i
+    puts 'Rentals: '
+    rentals = @rentals.select { |rental| rental.person.id === id_person}
+    if rentals.empty?
+      puts 'No rentals available for this ID😓'
+      puts ''
+      run
+    end
+    rentals.each do |rental|
+      puts "#{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
+    end
+    puts ''
     run
   end
 end
