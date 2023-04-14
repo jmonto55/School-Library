@@ -103,7 +103,7 @@ bundler install
 To run the project, execute the following command in Bash:
 
 ```
-./main.rb
+ruby main.rb
 ```
 
 ### Run Tests
